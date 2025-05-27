@@ -23,14 +23,14 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 	}
 	ds.Steps, err = strconv.Atoi(parts[0])
 	if err != nil {
-		return fmt.Errorf("invalid format datastring steps")
+		return err
 	}
 	if ds.Steps <= 0 {
 		return fmt.Errorf("the number of steps must be greater than 0")
 	}
 	ds.Duration, err = time.ParseDuration(parts[1])
 	if err != nil {
-		return fmt.Errorf("invalid format datastring duration")
+		return err
 	}
 	if ds.Duration <= 0 {
 		return fmt.Errorf("duration must be greater than 0")
